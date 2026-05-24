@@ -9,8 +9,9 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'en',
+    component: App,
     pathMatch: 'full',
+    title: 'Ucha Sephiskveradze | Angular Developer',
   },
   {
     path: '**',

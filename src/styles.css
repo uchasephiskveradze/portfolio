@@ -70,8 +70,7 @@
     @apply font-sans;
   }
 
-  /* Improve Georgian aesthetics and balance with Inter */
-  :lang(ka) {
+  :lang(ka) :not(.font-mono):not(.no-ka) {
     font-family: 'Mersad', 'FiraGO', sans-serif !important;
   }
 }
