@@ -2,6 +2,19 @@ import { Project } from '../models/projects.model';
 
 export const PROJECTS_DATA: Project[] = [
   {
+    id: 5,
+    title: 'Blog Management System',
+    titleKa: 'ბლოგის მართვის სისტემა',
+    description:
+      'A blog management SPA with post CRUD, search and sorting, CDK virtual infinite scroll, admin moderation, and role-based access. Built with a feature-based architecture, lazy loading, English and Georgian languages, and a light/dark theme.',
+    descriptionKa:
+      'ბლოგის მართვის ერთგვერდიანი აპლიკაცია პოსტების დამატებით, რედაქტირებითა და წაშლით, ძიებით, სორტირებით, CDK-ის ვირტუალური უსასრულო სქროლით, ადმინისტრატორის მოდერაციითა და როლებზე დაფუძნებული წვდომით. ფიჩერზე დაფუძნებული არქიტექტურა, lazy loading, ქართული და ინგლისური ენა, ღია და მუქი თემა.',
+    image:
+      'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1080&q=80',
+    tags: ['Angular 22', 'TypeScript', 'NgRx Signals', 'RxJS', 'Angular Material'],
+    githubUrl: 'https://github.com/uchasephiskveradze/portalProject',
+  },
+  {
     id: 1,
     title: 'Final Demo Project',
     titleKa: 'საბოლოო სადემონსტრაციო პროექტი',
