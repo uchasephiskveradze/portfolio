@@ -6,8 +6,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
     company: 'Asterbit',
-    role: 'Junior Angular Developer',
-    roleKa: 'უმცროსი Angular დეველოპერი',
+    role: 'Angular Developer',
+    roleKa: 'Angular დეველოპერი',
     location: 'Tbilisi, Georgia',
     locationKa: 'თბილისი, საქართველო',
     dates: 'Mar 2025 – Present',

@@ -20,6 +20,6 @@ describe('Experience', () => {
     fixture.detectChanges();
     const text = (fixture.nativeElement as HTMLElement).textContent ?? '';
     expect(text).toContain('Asterbit');
-    expect(text).toContain('Junior Angular Developer');
+    expect(text).toContain('Angular Developer');
   });
 });
