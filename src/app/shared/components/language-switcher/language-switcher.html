@@ -1,14 +1,14 @@
-<div class="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full p-1 shadow-lg">
-    <button (click)="setLanguage('en')"
-        class="no-ka flex items-center justify-center px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer min-w-10"
-        [class.bg-emerald-500]="currentLang() === 'en'" [class.text-white]="currentLang() === 'en'"
-        [class.text-gray-400]="currentLang() !== 'en'" [class.hover:text-emerald-400]="currentLang() !== 'en'">
-        EN
+<!-- Fixed-size pill: same width in both languages so nothing around it moves. -->
+<div class="no-ka flex items-center gap-1 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full p-1 shadow-lg"
+    role="group" [attr.aria-label]="'LANGUAGE.SWITCH' | translate">
+    @for (lang of languages; track lang.code) {
+    <button type="button" (click)="setLanguage(lang.code)" (pointerenter)="prefetch(lang.code)"
+        (focus)="prefetch(lang.code)" (touchstart)="prefetch(lang.code)" [attr.aria-pressed]="currentLang() === lang.code"
+        [attr.lang]="lang.code" [attr.title]="lang.label" [attr.aria-label]="lang.label"
+        class="no-ka inline-flex items-center justify-center w-11 h-10 rounded-full text-xs font-bold transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+        [class.bg-emerald-500]="currentLang() === lang.code" [class.text-gray-950]="currentLang() === lang.code"
+        [class.text-gray-400]="currentLang() !== lang.code" [class.hover:text-emerald-400]="currentLang() !== lang.code">
+        {{ lang.short }}
     </button>
-    <button (click)="setLanguage('ka')"
-        class="no-ka flex items-center justify-center px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer min-w-10"
-        [class.bg-emerald-500]="currentLang() === 'ka'" [class.text-white]="currentLang() === 'ka'"
-        [class.text-gray-400]="currentLang() !== 'ka'" [class.hover:text-emerald-400]="currentLang() !== 'ka'">
-        KA
-    </button>
+    }
 </div>

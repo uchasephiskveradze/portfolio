@@ -1,58 +1,43 @@
-<section class="py-20 px-6 relative overflow-hidden">
+<section id="skills" class="py-16 md:py-20 px-4 sm:px-6 relative" aria-labelledby="skills-title">
     <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div class="text-center mb-10 md:mb-14">
+            <h2 id="skills-title" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 {{ 'SKILLS.TITLE' | translate }}
             </h2>
-            <p class="text-gray-400 text-lg">
+            <p class="text-gray-400 text-base sm:text-lg">
                 {{ 'SKILLS.SUBTITLE' | translate }}
             </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            @for (skill of skills; track skill.name) {
-            <div class="relative group">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                </div>
-
-                <div
-                    class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:-translate-y-1 hover:border-emerald-400/50 transition-all duration-300">
-
-                    <div
-                        class="w-16 h-16 mx-auto mb-4 rounded-lg bg-gradient-to-br {{ skill.color }} flex items-center justify-center text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            @for (group of groups; track group.key) {
+            <div
+                class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-5 sm:p-6 hover:border-emerald-400/50 transition-colors duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 shrink-0 rounded-lg bg-linear-to-br {{ group.color }} flex items-center justify-center text-white"
+                        aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            @for (path of skill.iconPaths; track path) {
+                            @for (path of group.iconPaths; track path) {
                             <path [attr.d]="path" />
                             }
                         </svg>
                     </div>
-
-                    <h3 class="text-white font-semibold text-lg">
-                        {{ skill.name }}
+                    <h3 class="text-lg font-semibold text-white">
+                        {{ 'SKILLS.GROUPS.' + group.key | translate }}
                     </h3>
                 </div>
+
+                <ul class="flex flex-wrap gap-2">
+                    @for (item of group.items; track item) {
+                    <li
+                        class="no-ka inline-flex items-center rounded-full bg-gray-900/60 border border-gray-700 px-3 py-1 text-sm text-gray-200">
+                        {{ item }}
+                    </li>
+                    }
+                </ul>
             </div>
             }
-        </div>
-
-        <div class="mt-16 overflow-hidden">
-            <div class="flex gap-8 animate-marquee whitespace-nowrap w-max hover:[animation-play-state:paused]">
-                @for (skill of duplicatedSkills; track $index) {
-                <div
-                    class="inline-flex items-center gap-2 bg-gray-800/30 border border-gray-700 rounded-full px-6 py-3 transition-colors hover:bg-gray-700/50">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="text-gray-300">
-                        @for (path of skill.iconPaths; track path) {
-                        <path [attr.d]="path" />
-                        }
-                    </svg>
-                    <span class="text-gray-300 font-mono" lang="en">{{ skill.name }}</span>
-                </div>
-                }
-            </div>
         </div>
     </div>
 </section>

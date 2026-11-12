@@ -5,9 +5,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'GitHub',
     icon: Github,
-    url: 'https://www.github.com/umpalumpa03',
+    url: 'https://github.com/uchasephiskveradze',
     color: 'group-hover:text-gray-400',
-    handle: '@umpalumpa03',
+    handle: '@uchasephiskveradze',
   },
   {
     name: 'LinkedIn',
@@ -18,6 +18,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: 'Email',
+    nameKey: 'CONTACT.LABELS.EMAIL',
     icon: Mail,
     url: 'mailto:ucha.sephiskveradze@gmail.com',
     color: 'group-hover:text-emerald-400',

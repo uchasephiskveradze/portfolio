@@ -1,82 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/*
+ * Georgian font. Only the four weights the UI renders are shipped.
+ * LanguageService warms them up in the background so the first switch to KA
+ * paints with the final font instead of a fallback that later re-flows.
+ */
 @font-face {
   font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Regular-26958361069.otf') format('opentype');
+  src: url('/assets/fonts/mersad-400.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Thin-26958361069.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad ExtraLight-26958361069.otf') format('opentype');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Light-26958361069.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Medium-26958361069.otf') format('opentype');
+  src: url('/assets/fonts/mersad-500.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad SemiBold-26958361069.otf') format('opentype');
+  src: url('/assets/fonts/mersad-600.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Bold-26958361069.otf') format('opentype');
+  src: url('/assets/fonts/mersad-700.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad ExtraBold-26958361069.otf') format('opentype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mersad';
-  src: url('/assets/fonts/Mersad Black-26958361069.otf') format('opentype');
-  font-weight: 900;
-  font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep the scrollbar slot reserved so page width never changes. */
+    scrollbar-gutter: stable;
+    background-color: var(--color-gray-900);
+  }
+
   body {
     @apply font-sans;
   }
 
   :lang(ka) :not(.font-mono):not(.no-ka) {
-    font-family: 'Mersad', 'FiraGO', sans-serif !important;
+    font-family: 'Mersad', 'Noto Sans Georgian', sans-serif !important;
+  }
+
+  /* Monospace accents have no Georgian glyphs; use the Georgian font there. */
+  :lang(ka) .ka-sans {
+    font-family: 'Mersad', 'Noto Sans Georgian', sans-serif !important;
+  }
+
+  /* Latin-only UI (tags, language pill) keeps the English font in both languages. */
+  .no-ka,
+  .no-ka * {
+    font-family: var(--font-sans);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 .asterbit-input {
-  @apply w-full rounded-md bg-gray-900/50 border border-gray-600 px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors;
+  @apply w-full rounded-md bg-gray-900/50 border border-gray-600 px-3 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors;
 }
 
 .asterbit-input.ng-invalid.ng-touched {

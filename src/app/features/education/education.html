@@ -1,73 +1,62 @@
-<section class="py-20 px-6 relative">
+<section id="education" class="py-16 md:py-20 px-4 sm:px-6 relative" aria-labelledby="education-title">
     <div class="max-w-6xl mx-auto">
 
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div class="text-center mb-10 md:mb-14">
+            <h2 id="education-title" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 {{ 'EDUCATION.TITLE' | translate }}
             </h2>
-            <p class="text-gray-400 text-lg">
+            <p class="text-gray-400 text-base sm:text-lg">
                 {{ 'EDUCATION.SUBTITLE' | translate }}
             </p>
         </div>
 
         <div class="relative">
-            <div
-                class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-emerald-500 via-blue-500 to-purple-500 transform -translate-x-1/2">
+            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-emerald-500 via-blue-500 to-purple-500 -translate-x-1/2"
+                aria-hidden="true">
             </div>
 
-            <div class="space-y-12">
-                @for (item of education; track item.id; let isEven = $even) {
+            <ol class="space-y-6 md:space-y-10">
+                @for (item of education(); track item.id; let isEven = $even) {
+                <li class="relative flex items-center md:gap-16" [ngClass]="isEven ? 'md:flex-row' : 'md:flex-row-reverse'">
 
-                <div class="relative flex items-center gap-8"
-                    [ngClass]="isEven ? 'md:flex-row' : 'md:flex-row-reverse'">
-
-                    <div class="flex-1">
-                        <div class="text-left" [ngClass]="isEven ? 'md:text-right' : 'md:text-left'">
-                            <div class="group relative inline-block w-full md:w-auto">
-
-                                <div
-                                    class="absolute -inset-1 bg-linear-to-r from-emerald-500/20 to-blue-500/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300">
+                    <div class="flex-1 min-w-0">
+                        <div
+                            class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-5 sm:p-6 hover:border-emerald-400/50 transition-colors duration-300"
+                            [ngClass]="isEven ? 'md:text-right' : 'md:text-left'">
+                            <div class="flex items-start gap-4" [ngClass]="isEven ? 'md:flex-row-reverse' : ''">
+                                <!-- Inline icon on mobile; the timeline dot replaces it on desktop -->
+                                <div class="md:hidden w-10 h-10 shrink-0 rounded-full bg-linear-to-br {{ item.color }} flex items-center justify-center"
+                                    aria-hidden="true">
+                                    <lucide-icon [img]="item.icon" class="w-5 h-5 text-white"></lucide-icon>
                                 </div>
-
-                                <div
-                                    class="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:border-emerald-400/50 transition-all duration-300">
-                                    <h3 class="text-xl font-bold text-white mb-2">
-                                        {{ getVal(item, 'institution') }}
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm text-gray-400">{{ item.dates }}</p>
+                                    <h3 class="text-lg sm:text-xl font-bold text-white mt-1">
+                                        {{ item.program }}
                                     </h3>
-                                    <p class="text-emerald-400 font-semibold mb-2" lang="en">
-                                        {{ getVal(item, 'program') }}
+                                    <p class="text-emerald-400 font-semibold mt-1">
+                                        {{ item.institution }}
                                     </p>
-                                    <p class="text-gray-400 text-sm">
-                                        {{ getVal(item, 'description') }}
+                                    <p class="text-gray-400 text-sm leading-relaxed mt-2">
+                                        {{ item.description }}
                                     </p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center justify-center z-10">
+                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center z-10"
+                        aria-hidden="true">
                         <div
-                            class="w-16 h-16 rounded-full bg-linear-to-br {{ item.color }} flex items-center justify-center shadow-lg border-4 border-gray-900">
-                            <lucide-icon [img]="item.icon" class="w-8 h-8 text-white"></lucide-icon>
+                            class="w-14 h-14 rounded-full bg-linear-to-br {{ item.color }} flex items-center justify-center shadow-lg border-4 border-gray-900">
+                            <lucide-icon [img]="item.icon" class="w-6 h-6 text-white"></lucide-icon>
                         </div>
                     </div>
 
-                    <div class="hidden md:block flex-1"></div>
-
-                </div>
+                    <div class="hidden md:block flex-1" aria-hidden="true"></div>
+                </li>
                 }
-            </div>
+            </ol>
         </div>
-
-        <div class="md:hidden mt-12 flex justify-center gap-6">
-            @for (item of education; track item.id) {
-            <div class="w-12 h-12 rounded-full bg-linear-to-br {{ item.color }} flex items-center justify-center">
-                <lucide-icon [img]="item.icon" class="w-6 h-6 text-white"></lucide-icon>
-            </div>
-            }
-        </div>
-
     </div>
 </section>

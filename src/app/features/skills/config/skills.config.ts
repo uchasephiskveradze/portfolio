@@ -1,4 +1,4 @@
-import { Skill } from '../models/skills.model';
+import { SkillGroup } from '../models/skills.model';
 
 const ICON_PATHS = {
   fileCode: [
@@ -75,23 +75,36 @@ const ICON_PATHS = {
   ],
 } as const;
 
-export const SKILLS_DATA: Skill[] = [
-  { name: 'HTML5', color: 'from-orange-500 to-red-500', iconPaths: ICON_PATHS.fileCode },
-  { name: 'CSS3', color: 'from-blue-500 to-cyan-500', iconPaths: ICON_PATHS.palette },
-  { name: 'Sass', color: 'from-pink-500 to-rose-500', iconPaths: ICON_PATHS.droplet },
-  { name: 'JavaScript', color: 'from-yellow-400 to-amber-500', iconPaths: ICON_PATHS.code },
-  { name: 'TypeScript', color: 'from-blue-600 to-blue-400', iconPaths: ICON_PATHS.fileType },
-  { name: 'Tailwind CSS', color: 'from-teal-400 to-cyan-500', iconPaths: ICON_PATHS.wind },
-  { name: 'PrimeNG', color: 'from-cyan-500 to-blue-600', iconPaths: ICON_PATHS.component },
-  { name: 'Responsive Design', color: 'from-fuchsia-500 to-pink-500', iconPaths: ICON_PATHS.smartphone },
-  { name: 'Angular', color: 'from-red-600 to-pink-500', iconPaths: ICON_PATHS.triangle },
-  { name: 'RxJS', color: 'from-purple-500 to-indigo-500', iconPaths: ICON_PATHS.workflow },
-  { name: 'NgRx', color: 'from-violet-500 to-purple-600', iconPaths: ICON_PATHS.database },
-  { name: 'Signals', color: 'from-amber-400 to-orange-500', iconPaths: ICON_PATHS.zap },
-  { name: 'REST APIs', color: 'from-emerald-500 to-teal-600', iconPaths: ICON_PATHS.globe },
-  { name: 'WebSocket', color: 'from-indigo-500 to-blue-500', iconPaths: ICON_PATHS.radio },
-  { name: 'Nx', color: 'from-sky-500 to-blue-700', iconPaths: ICON_PATHS.hexagon },
-  { name: 'Git', color: 'from-orange-500 to-red-600', iconPaths: ICON_PATHS.gitBranch },
-  { name: 'Agile/Scrum', color: 'from-lime-500 to-green-600', iconPaths: ICON_PATHS.kanban },
-  { name: 'Code Review', color: 'from-rose-500 to-orange-500', iconPaths: ICON_PATHS.codeReview },
+// Groups mirror the Skills section of the CV (cv.md). Keep them in sync.
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    key: 'FRONTEND',
+    color: 'from-red-600 to-pink-500',
+    iconPaths: ICON_PATHS.triangle,
+    items: ['Angular 21', 'TypeScript', 'JavaScript ES6+', 'HTML5', 'CSS3', 'SCSS'],
+  },
+  {
+    key: 'STATE',
+    color: 'from-purple-500 to-indigo-500',
+    iconPaths: ICON_PATHS.workflow,
+    items: ['RxJS', 'NgRx', 'NgRx Signal Store', 'Angular Signals', 'Signal Forms'],
+  },
+  {
+    key: 'UI',
+    color: 'from-teal-400 to-cyan-500',
+    iconPaths: ICON_PATHS.smartphone,
+    items: ['Responsive Design', 'TailwindCSS', 'PrimeNG', 'Reusable Components', 'Accessibility'],
+  },
+  {
+    key: 'API',
+    color: 'from-emerald-500 to-teal-600',
+    iconPaths: ICON_PATHS.globe,
+    items: ['REST APIs', 'WebSocket'],
+  },
+  {
+    key: 'WORKFLOW',
+    color: 'from-orange-500 to-red-600',
+    iconPaths: ICON_PATHS.gitBranch,
+    items: ['Git / GitHub', 'Code Review', 'Nx', 'Agile/Scrum', 'AI workflow'],
+  },
 ];

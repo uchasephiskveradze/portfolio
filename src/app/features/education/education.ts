@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { EducationItem } from './models/education.model';
-import { EDUCATION_DATA } from './config/education.config';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { LanguageService } from '../../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../core/services/language.service';
+import { EDUCATION_DATA } from './config/education.config';
 
 @Component({
   selector: 'app-education',
@@ -13,13 +12,18 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Education {
-  private readonly languageService = inject(LanguageService);
-  public readonly education: EducationItem[] = EDUCATION_DATA;
+  private readonly language = inject(LanguageService).language;
 
-  protected getVal(item: EducationItem, key: 'institution' | 'program' | 'description'): string {
-    const kaKey = (key + 'Ka') as keyof EducationItem;
-    return this.languageService.language() === 'ka' && item[kaKey]
-      ? (item[kaKey] as string)
-      : (item[key] as string);
-  }
+  protected readonly education = computed(() => {
+    const ka = this.language() === 'ka';
+    return EDUCATION_DATA.map((item) => ({
+      id: item.id,
+      icon: item.icon,
+      color: item.color,
+      institution: ka ? item.institutionKa : item.institution,
+      program: ka ? item.programKa : item.program,
+      dates: ka ? item.datesKa : item.dates,
+      description: ka ? item.descriptionKa : item.description,
+    }));
+  });
 }

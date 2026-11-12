@@ -1,18 +1,22 @@
 <main class="min-h-screen bg-gray-900 text-white relative" [attr.lang]="currentLang()">
-  <!-- Fixed Language Switcher -->
-  <div class="fixed top-4 right-4 sm:top-8 sm:right-8 z-50 scale-90 sm:scale-100 origin-top-right">
+  <!-- Fixed language switcher -->
+  <!-- Hides while scrolling down so it never sits on top of content; returns on scroll up. -->
+  <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 transition-transform duration-300"
+    [class.-translate-y-24]="switcherHidden()">
     <app-language-switcher />
   </div>
 
   <app-hero (viewProjects)="scrollToProjects()" />
 
+  <app-experience />
+
   <app-skills />
 
-  <div #projectsRef>
+  <div #projectsRef class="scroll-mt-4">
     @defer (on viewport) {
     <app-projects />
     } @placeholder {
-    <div class="h-96 animate-pulse bg-gray-800"></div>
+    <div class="h-[60rem]"></div>
     }
   </div>
 

@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Project } from './models/projects.model';
-import { PROJECTS_DATA } from './config/projects.config';
-import { LanguageService } from '../../core/services/language.service';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../core/services/language.service';
+import { PROJECTS_DATA } from './config/projects.config';
 
 @Component({
   selector: 'app-projects',
@@ -11,18 +10,14 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Projects {
-  private readonly languageService = inject(LanguageService);
-  public readonly projects: Project[] = PROJECTS_DATA;
+  private readonly language = inject(LanguageService).language;
 
-  protected getProjectTitle(project: Project): string {
-    return this.languageService.language() === 'ka' && project.titleKa
-      ? project.titleKa
-      : project.title;
-  }
-
-  protected getProjectDescription(project: Project): string {
-    return this.languageService.language() === 'ka' && project.descriptionKa
-      ? project.descriptionKa
-      : project.description;
-  }
+  protected readonly projects = computed(() => {
+    const ka = this.language() === 'ka';
+    return PROJECTS_DATA.map((project) => ({
+      ...project,
+      displayTitle: ka ? project.titleKa : project.title,
+      displayDescription: ka ? project.descriptionKa : project.description,
+    }));
+  });
 }

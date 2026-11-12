@@ -1,17 +1,16 @@
 import { Routes } from '@angular/router';
 import { App } from './app';
 
+// No route titles: LanguageService sets the title per language.
 export const routes: Routes = [
   {
     path: ':lang',
     component: App,
-    title: 'Ucha Sephiskveradze | Angular Developer',
   },
   {
     path: '',
     component: App,
     pathMatch: 'full',
-    title: 'Ucha Sephiskveradze | Angular Developer',
   },
   {
     path: '**',

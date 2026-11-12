@@ -3,19 +3,56 @@
 
 <head>
   <meta charset="utf-8">
-  <title>NewPorfolio</title>
+  <title>Ucha Sephiskveradze | Front-End Developer (Angular)</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Ucha Sephiskveradze, Front-End Developer in Tbilisi. Angular developer at Asterbit since 2025, building reusable components and responsive interfaces with TypeScript, RxJS and Signals.">
+  <meta name="author" content="Ucha Sephiskveradze">
+  <meta name="theme-color" content="#111827">
+  <link rel="canonical" href="https://uchaportfolio.netlify.app/en">
+  <link rel="alternate" hreflang="en" href="https://uchaportfolio.netlify.app/en">
+  <link rel="alternate" hreflang="ka" href="https://uchaportfolio.netlify.app/ka">
+  <link rel="alternate" hreflang="x-default" href="https://uchaportfolio.netlify.app/">
+
+  <!-- Link previews (LinkedIn, Telegram, Slack, X) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Ucha Sephiskveradze">
+  <meta property="og:title" content="Ucha Sephiskveradze | Front-End Developer (Angular)">
+  <meta property="og:description"
+    content="Angular developer at Asterbit since 2025. Reusable components and responsive interfaces with TypeScript, RxJS and Signals.">
+  <meta property="og:url" content="https://uchaportfolio.netlify.app/en">
+  <meta property="og:image" content="https://uchaportfolio.netlify.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ucha Sephiskveradze, Front-End Developer (Angular)">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ka_GE">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/solomondz/firago@master/firago.css">
-  <meta name="description"
-    content="Ucha Sephiskveradze - Junior Angular Developer specializing in high-performance fintech and enterprise web applications.">
+
+  <!-- Visitors opening /ka get the Georgian font before first paint (no font swap jump). -->
+  <script>
+    var seg = location.pathname.split('/')[1], lang = seg;
+    if (!seg) { try { lang = localStorage.getItem('user_language'); } catch (e) {} }
+    if (lang === 'ka') {
+      document.documentElement.lang = 'ka';
+      document.querySelector('link[rel="canonical"]').href = 'https://uchaportfolio.netlify.app/ka';
+      [400, 500, 600, 700].forEach(function (w) {
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'font'; l.type = 'font/otf'; l.crossOrigin = 'anonymous';
+        l.href = '/assets/fonts/mersad-' + w + '.otf';
+        document.head.appendChild(l);
+      });
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-gray-900">
   <app-root></app-root>
 </body>
 

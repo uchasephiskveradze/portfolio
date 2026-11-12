@@ -1,7 +1,7 @@
-<section class="py-12 md:py-20 px-4 sm:px-6 relative">
+<section id="projects" class="py-16 md:py-20 px-4 sm:px-6 relative" aria-labelledby="projects-title">
     <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12 md:mb-16">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+        <div class="text-center mb-10 md:mb-14">
+            <h2 id="projects-title" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 {{ 'PROJECTS.TITLE' | translate }}
             </h2>
             <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
@@ -10,64 +10,77 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            @for (project of projects; track project.id) {
-            <div class="group relative">
-                <div
-                    class="absolute -inset-0.5 bg-gradient-to-r rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-500">
+            @for (project of projects(); track project.id) {
+            <article
+                class="group flex flex-col bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-2xl overflow-hidden hover:border-emerald-400/50 transition-colors duration-300">
+
+                <!-- Fixed aspect ratio: the card never changes height when the image loads -->
+                <div class="relative aspect-[16/10] overflow-hidden bg-gray-900">
+                    @if (project.image) {
+                    <img [src]="project.image" [alt]="project.displayTitle" width="1280" height="800" loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                    } @else if (project.cover) {
+                    <div class="absolute inset-0 bg-linear-to-br {{ project.cover.gradient }} flex items-center justify-center"
+                        aria-hidden="true">
+                        <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.25)_1px,transparent_0)] bg-[length:18px_18px]"></div>
+                        <span
+                            class="no-ka relative font-mono text-lg sm:text-xl text-white/90 bg-gray-900/60 border border-white/10 rounded-lg px-4 py-2">
+                            {{ project.cover.label }}
+                        </span>
+                    </div>
+                    }
+                    @if (project.team) {
+                    <span
+                        class="absolute top-3 left-3 rounded-full bg-gray-900/80 border border-gray-600 px-2.5 py-0.5 text-xs font-semibold text-gray-200">
+                        {{ 'PROJECTS.TEAM' | translate }}
+                    </span>
+                    }
                 </div>
 
-                <div
-                    class="relative bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg overflow-hidden hover:border-emerald-400/50 transition-all duration-300">
+                <div class="flex flex-col flex-1 p-5 sm:p-6 gap-4">
+                    <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                        {{ project.displayTitle }}
+                    </h3>
 
-                    <div class="relative h-48 overflow-hidden">
-                        <img [src]="project.image" [alt]="project.title"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent">
-                        </div>
-                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        {{ project.displayDescription }}
+                    </p>
 
-                    <div class="p-6 space-y-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-                            {{ getProjectTitle(project) }}
-                        </h3>
+                    <ul class="flex flex-wrap gap-2" aria-label="Technologies">
+                        @for (tag of project.tags; track tag) {
+                        <li
+                            class="no-ka inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-gray-700/50 text-emerald-400 border border-emerald-400/30">
+                            {{ tag }}
+                        </li>
+                        }
+                    </ul>
 
-                        <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">
-                            {{ getProjectDescription(project) }}
-                        </p>
+                    <div class="flex gap-3 mt-auto pt-2">
+                        @if (project.liveUrl) {
+                        <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center flex-1 bg-emerald-500 hover:bg-emerald-400 text-gray-950 font-semibold rounded-md px-3 py-2.5 min-h-11 text-sm font-medium transition-colors cursor-pointer">
+                            <img class="mr-2 brightness-0 invert" src="svgs/projects/live-demo.svg" alt="" width="16"
+                                height="16" aria-hidden="true" />
+                            {{ 'PROJECTS.LIVE_DEMO' | translate }}
+                        </a>
+                        }
 
-                        <div class="flex flex-wrap gap-2">
-                            @for (tag of project.tags; track tag) {
-                            <span
-                                class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-gray-700/50 text-emerald-400 border border-emerald-400/30 hover:bg-emerald-400/10 transition-colors">
-                                {{ tag }}
-                            </span>
+                        @if (project.githubUrl) {
+                        <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-2 border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-gray-300 rounded-md px-3 py-2.5 min-h-11 min-w-11 text-sm font-medium transition-colors cursor-pointer"
+                            [class.flex-1]="!project.liveUrl"
+                            [attr.aria-label]="('PROJECTS.SOURCE' | translate) + ': ' + project.displayTitle">
+                            <img class="brightness-0 invert" src="svgs/projects/github.svg" alt="" width="16"
+                                height="16" aria-hidden="true" />
+                            @if (!project.liveUrl) {
+                            <span>{{ 'PROJECTS.SOURCE' | translate }}</span>
                             }
-                        </div>
-
-                        <div class="flex gap-3 pt-2">
-                            @if (project.liveUrl) {
-                            <a [href]="project.liveUrl" target="_blank"
-                                class="inline-flex items-center justify-center flex-1 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer">
-                                <img class="mr-2 brightness-0 invert" src="svgs/projects/live-demo.svg"
-                                    alt="Live Demo Button" />
-                                {{ 'PROJECTS.LIVE_DEMO' | translate }}
-                            </a>
-                            }
-
-                            @if (project.githubUrl) {
-                            <a [href]="project.githubUrl" target="_blank"
-                                class="inline-flex items-center justify-center border border-gray-600 hover:border-emerald-400 hover:text-emerald-400 text-gray-300 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
-                                [class.flex-1]="!project.liveUrl">
-                                <img class="brightness-0 invert" src="svgs/projects/github.svg" alt="GitHub Button" />
-                                @if (!project.liveUrl) {
-                                <span class="ml-2">GitHub</span>
-                                }
-                            </a>
-                            }
-                        </div>
+                        </a>
+                        }
                     </div>
                 </div>
-            </div>
+            </article>
             }
         </div>
     </div>
