@@ -6,12 +6,12 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
     company: 'Asterbit',
-    role: 'Angular Developer',
-    roleKa: 'Angular დეველოპერი',
+    role: 'Frontend Developer',
+    roleKa: 'Frontend დეველოპერი',
     location: 'Tbilisi, Georgia',
     locationKa: 'თბილისი, საქართველო',
-    dates: 'Mar 2025 – Present',
-    datesKa: '2025 წლის მარტი – დღემდე',
+    dates: 'Jul 2026 – Present',
+    datesKa: '2026 წლის ივლისი – დღემდე',
     current: true,
     bullets: [
       'Build and refine reusable Angular components for product features.',

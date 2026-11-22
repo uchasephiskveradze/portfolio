@@ -4,7 +4,7 @@ export const EN = {
     NAME: 'Ucha Sephiskveradze',
     ROLE: 'Front-End Developer · Angular',
     DESCRIPTION:
-      'Angular developer at Asterbit since March 2025. I build reusable components and responsive interfaces with TypeScript, RxJS and Signals, take part in code reviews, and helped set up a new project with DevOps.',
+      'Frontend Developer at Asterbit since July 2026. I build reusable Angular components and responsive interfaces with TypeScript, RxJS and Signals, take part in code reviews, and helped set up a new project with DevOps.',
     VIEW_PROJECTS: 'View Projects',
     DOWNLOAD_CV: 'Download CV',
     LINKEDIN: 'LinkedIn profile',
@@ -82,7 +82,7 @@ export const EN = {
   META: {
     TITLE: 'Ucha Sephiskveradze | Front-End Developer (Angular)',
     DESCRIPTION:
-      'Ucha Sephiskveradze, Front-End Developer in Tbilisi. Angular developer at Asterbit since 2025, building reusable components and responsive interfaces with TypeScript, RxJS and Signals.',
+      'Ucha Sephiskveradze, Front-End Developer in Tbilisi, at Asterbit since July 2026, building reusable Angular components and responsive interfaces with TypeScript, RxJS and Signals.',
   },
   LANGUAGE: {
     SWITCH: 'Choose language',

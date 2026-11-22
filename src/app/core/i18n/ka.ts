@@ -6,7 +6,7 @@ export const KA: Translations = {
     NAME: 'უჩა სეფისკვერაძე',
     ROLE: 'Front-End დეველოპერი · Angular',
     DESCRIPTION:
-      '2025 წლის მარტიდან Asterbit-ში Angular დეველოპერად ვმუშაობ. TypeScript-ით, RxJS-ითა და Signals-ით ვქმნი მრავალჯერად კომპონენტებსა და ადაპტიურ ინტერფეისებს, ვმონაწილეობ კოდის მიმოხილვაში, ხოლო DevOps-თან ერთად ახალი პროექტის გამართვაშიც მივიღე მონაწილეობა.',
+      '2026 წლის ივლისიდან Asterbit-ში Frontend დეველოპერად ვმუშაობ. TypeScript-ით, RxJS-ითა და Signals-ით ვქმნი მრავალჯერად Angular კომპონენტებსა და ადაპტიურ ინტერფეისებს, ვმონაწილეობ კოდის მიმოხილვაში, ხოლო DevOps-თან ერთად ახალი პროექტის გამართვაშიც მივიღე მონაწილეობა.',
     VIEW_PROJECTS: 'პროექტების ნახვა',
     DOWNLOAD_CV: 'CV-ის ჩამოტვირთვა',
     LINKEDIN: 'LinkedIn პროფილი',
@@ -84,7 +84,7 @@ export const KA: Translations = {
   META: {
     TITLE: 'უჩა სეფისკვერაძე | Front-End დეველოპერი (Angular)',
     DESCRIPTION:
-      'უჩა სეფისკვერაძე, Front-End დეველოპერი თბილისში. 2025 წლიდან Asterbit-ში Angular დეველოპერად ვმუშაობ: მრავალჯერადი კომპონენტები და ადაპტიური ინტერფეისები TypeScript-ით, RxJS-ითა და Signals-ით.',
+      'უჩა სეფისკვერაძე, Front-End დეველოპერი თბილისში. 2026 წლის ივლისიდან Asterbit-ში ვმუშაობ: მრავალჯერადი Angular კომპონენტები და ადაპტიური ინტერფეისები TypeScript-ით, RxJS-ითა და Signals-ით.',
   },
   LANGUAGE: {
     SWITCH: 'ენის არჩევა',
